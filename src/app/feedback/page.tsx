@@ -20,7 +20,7 @@ export default function FeedbackPage() {
   useEffect(() => {
     try {
       sessionStorage.removeItem(DRAFT_KEY);
-    } catch {}
+    } catch { }
   }, []);
 
   const overall: number = useMemo(() => {
@@ -36,41 +36,40 @@ export default function FeedbackPage() {
         DRAFT_KEY,
         JSON.stringify({ helpful, engaging, overall })
       );
-    } catch {}
+    } catch { }
   };
 
   const handleBack = () => router.back();
 
   return (
-    <div className='min-h-dvh relative text-white'>
-      <div className='absolute inset-0 -z-10'>
+    <div className='relative min-h-dvh text-white'>
+      <div className='-z-10 absolute inset-0'>
         <Image src='/bg.png' alt='' fill priority className='object-cover' />
       </div>
 
-      <section className='flex flex-col flex-1 relative max-w-md mx-auto px-4 py-6 h-screen'>
+      <section className='relative flex flex-col flex-1 mx-auto px-4 py-6 max-w-md h-screen'>
         <BackButton onClick={handleBack} className='mt-2 mb-2' />
 
         <div className='mx-auto mb-6'>
           <ChatIcon />
         </div>
 
-        <div className='text-center mb-10'>
+        <div className='mb-10 text-center'>
           <h1 className='font-bold text-[32px] leading-tight'>
-            How would you rate this <br className='hidden sm:block' />
+            How would you rate this <br className='sm:block hidden' />
             training?
           </h1>
         </div>
 
         {/* Helpful */}
         <div className='mb-8'>
-          <p className='text-center text-white/80 mb-3'>
+          <p className='mb-3 text-center text-white/80'>
             How helpful was the information?
           </p>
           <div className='flex justify-center items-center gap-4'>
             {[1, 2, 3, 4, 5].map((i) => (
               <StarButton
                 key={`h-${i}`}
-                size={44}
                 active={i <= helpful}
                 onClick={() => setHelpful(i)}
               />
@@ -80,14 +79,13 @@ export default function FeedbackPage() {
 
         {/* Engaging */}
         <div className='mb-12'>
-          <p className='text-center text-white/80 mb-3'>
+          <p className='mb-3 text-center text-white/80'>
             How engaging was the presentation of the content?
           </p>
           <div className='flex justify-center items-center gap-4'>
             {[1, 2, 3, 4, 5].map((i) => (
               <StarButton
                 key={`e-${i}`}
-                size={44}
                 active={i <= engaging}
                 onClick={() => setEngaging(i)}
               />
@@ -102,7 +100,7 @@ export default function FeedbackPage() {
         >
           <Button
             variant='button'
-            className='w-full rounded-[999px] py-4 text-lg flex items-center text-center justify-center px-5'
+            className='flex justify-center items-center px-5 py-4 rounded-[999px] w-full text-center text-lg'
           >
             Next
           </Button>

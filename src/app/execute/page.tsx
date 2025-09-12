@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import Arrow from "@/public/arrow.svg";
+// import Arrow from "@/public/arrow.svg";
 import { useRouter } from "next/navigation";
 import { AnimatePresence, motion, cubicBezier } from "framer-motion";
 

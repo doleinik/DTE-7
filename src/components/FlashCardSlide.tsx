@@ -166,8 +166,8 @@ export default function FlashCardSlide({
   const isActiveNow = isActive || swiper?.activeIndex === index;
 
   // флаг наличия фиксированной кнопки Submit (под неё поднимаем свайп-иконку)
-  const showSubmit =
-    card.type === "input" && hasTyped && isActiveNow && mounted;
+  // const showSubmit =
+  //   card.type === "input" && hasTyped && isActiveNow && mounted;
 
   return (
     <div className='relative flex flex-col h-full'>
