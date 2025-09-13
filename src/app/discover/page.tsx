@@ -21,7 +21,7 @@ const focusLabels: Record<Focus, string> = {
 };
 
 const helperLabels: Record<Helper, string> = {
-  breakthrough: "I’m coming off a breakthrough.",
+  breakthrough: "I’m coming off a breakthrough",
   "goals-progress": "I’m clear on my goals and making progress.",
   focused: "I’m focused and determined.",
   habits: "I’m building habits that work for me.",
@@ -55,7 +55,7 @@ export default function DiscoverPage() {
   if (step === 1) {
     return (
       <Screen progress={progressByStep[1]} onBack={prev}>
-        <div className='text-xl font-medium mb-8'>
+        <div className='mb-8 font-medium text-xl'>
           What do you want to focus on today?
         </div>
         <div className='space-y-3'>
@@ -85,7 +85,7 @@ export default function DiscoverPage() {
     const currentFocusLabel = focus ? focusLabels[focus] : "Control";
     return (
       <Screen progress={progressByStep[2]} onBack={prev}>
-        <div className='text-xl font-medium mb-8'>
+        <div className='mb-8 font-medium text-xl'>
           How are you feeling about your {currentFocusLabel} today? (for the
           purpose of this demo, select something 4 or higher)
         </div>
@@ -95,7 +95,7 @@ export default function DiscoverPage() {
             <OptionButton
               key={rank}
               leading={rank}
-              selected={flashIdx === i || rank === 5} 
+              selected={flashIdx === i || rank === 5}
               onClick={() => {
                 if (rank >= 4) {
                   flashThen(i, () => {
@@ -106,12 +106,12 @@ export default function DiscoverPage() {
               }}
             >
               {rank === 5 &&
-                "I’ve been steady and composed, even under pressure."}
+                "I’ve been dialed in and mentally sharp."}
               {rank === 4 &&
-                "I can settle myself pretty well when things get tough."}
-              {rank === 3 && "I hold it together sometimes, but not always."}
-              {rank === 2 && "I lose control quickly when things go wrong."}
-              {rank === 1 && "I feel reactive and scattered most of the time."}
+                "I’m mostly able to stay focused when I need to."}
+              {rank === 3 && "My focus is okay, but not consistent."}
+              {rank === 2 && "I get distracted or lose concentration a lot."}
+              {rank === 1 && "My mind is all over the place lately."}
             </OptionButton>
           ))}
         </div>
@@ -122,10 +122,9 @@ export default function DiscoverPage() {
   // step === 3
   return (
     <Screen progress={progressByStep[3]} onBack={prev}>
-      <div className='text-lg mb-5'>
+      <div className='mb-5 text-lg'>
         What’s been helping you stay strong in your{" "}
-        {focus ? focusLabels[focus] : "Control"}? (for the purpose of this demo,
-        select pushing myself)
+        {focus ? focusLabels[focus] : "Control"}? (for the purpose of this demo, select habits)
       </div>
 
       <div className='space-y-3'>
@@ -136,7 +135,7 @@ export default function DiscoverPage() {
               <OptionButton
                 key={key}
                 align='left'
-                selected={flashIdx === i || key === "lead-improve"} 
+                selected={flashIdx === i || key === "lead-improve"}
                 disabled={!isAllowed}
                 onClick={() =>
                   isAllowed &&
@@ -153,9 +152,9 @@ export default function DiscoverPage() {
                         ts: Date.now(),
                       });
                       localStorage.setItem("answers", JSON.stringify(stored));
-                    } catch {}
+                    } catch { }
 
-                    router.replace("/dashboard?view=discover");
+                    router.replace("/modal");
                   })
                 }
               >

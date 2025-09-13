@@ -1,15 +1,15 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  async redirects() {
-    return [
-      {
-        source: '/',
-        destination: '/flashcard',
-        permanent: true,
-      },
-    ]
-  },
+ // async redirects() {
+ //  return [
+ //   {
+ //    source: "/",
+ //    destination: "/notification",
+ //    permanent: true,
+ //   },
+ //  ];
+ // },
 };
 
 export default nextConfig;

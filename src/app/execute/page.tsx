@@ -27,11 +27,10 @@ const EASE = cubicBezier(0.22, 1, 0.36, 1);
 // --- Конфиг вопроса (можете позже подменить данными из Strapi) ---
 const qId = "exec-q1";
 const qText =
-  "What does a reset help you do during intense training or competition?";
+  "True or False: It's best to wait until you feel completely confident before taking action.";
 const answers = [
-  "Pause your effort completely",
-  "Come back to your focus with more clarity",
-  "Avoid doing too much",
+  "True",
+  "False",
 ];
 const correctIndex = 1;
 const scoreType = "confidence";
@@ -241,7 +240,7 @@ export default function ExecutePage() {
 
         <div className='pb-[calc(env(safe-area-inset-bottom)+96px)] flex flex-col gap-4'>
           <h1 className='font-medium text-2xl leading-tight'>
-            Why do you think mental resets help gain more control?
+            Why do you think having a planned recovery word/phrase works?
           </h1>
 
           <TextArea

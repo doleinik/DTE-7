@@ -33,7 +33,7 @@ export default function FlashcardPage() {
       {
         id: "f1",
         type: "text",
-        title: 'Lorem',
+        title: 'Mastering Focus',
         content:
           "As routines shift, your attention can start scanning in too many directions. When you’re adding new elements—more reps, different feedback, higher expectations—it’s easy for your focus to feel stretched. Athletes who stay grounded during growth phases usually return to one constant. They build around a steady focal point instead of chasing everything at once. This is what keeps your attention useful, even in the middle of change.",
         backgroundImage: "/game-bg.png",

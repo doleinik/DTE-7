@@ -71,8 +71,6 @@ const generateReel = (word: string, targetChar: string, total = 20) =>
     }).sort(() => Math.random() - 0.5);
 
 
-
-
 type ResetSlotGameProps = {
     card: FlashcardsContent;
     index: number;
@@ -456,7 +454,7 @@ export default function ResetSlotGame({
                         transition={{ duration: 0.6, ease: EASE, delay: 0.6 }}
                         className="mt-auto"
                     >
-                        <Link href={'/'} onClick={handleNext} className="flex justify-center items-center bg-white disabled:bg-white/50 rounded-[30px] w-full h-[3.75rem] active:font-bold text-black text-center">
+                        <Link href={'/execute'} onClick={handleNext} className="flex justify-center items-center bg-white disabled:bg-white/50 rounded-[30px] w-full h-[3.75rem] active:font-bold text-black text-center">
                             Next
                         </Link>
                     </motion.div>

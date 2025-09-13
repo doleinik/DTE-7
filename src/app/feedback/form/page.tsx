@@ -74,7 +74,7 @@ export default function FeedbackFormPage() {
   const onSubmit = async () => {
     if (!canSubmit || submitting) return;
     if (!draft) {
-      router.replace("/feedback");
+      router.replace("/dashboard");
       return;
     }
 
