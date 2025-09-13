@@ -51,21 +51,25 @@ const WORDS = [
 ];
 
 
-const generateReel = (word: string, total = 20) =>
+const generateReel = (word: string, targetChar: string, total = 20) =>
     Array.from({ length: total }, () => {
         const rand = Math.random();
 
-        if (rand < 0.7) {
-            // 70% шанс вибрати літеру з потрібного слова
-            return word[Math.floor(Math.random() * word.length)];
-        } else if (rand < 0.85) {
-            // 15% шанс вибрати іконку
+        if (rand < 0.4) {
+            return targetChar;
+        } else if (rand < 0.6) {
+            // 20% шанс на інші букви з слова
+            const others = word.split("").filter((c) => c !== targetChar);
+            return others[Math.floor(Math.random() * others.length)] || targetChar;
+        } else if (rand < 0.8) {
+            // 10% іконки
             return ICONS[Math.floor(Math.random() * ICONS.length)];
         } else {
-            // 15% шанс вибрати випадкову літеру
+            // 10% рандомна літера
             return LETTERS[Math.floor(Math.random() * LETTERS.length)];
         }
     }).sort(() => Math.random() - 0.5);
+
 
 
 
@@ -176,7 +180,7 @@ export default function ResetSlotGame({
         setWon(false);
         setLost(false);
         setFailed(false);
-        setReels([generateReel(word), generateReel(word), generateReel(word)]);
+        setReels([generateReel(word, word[0]), generateReel(word, word[0]), generateReel(word, word[0])]);
         setAutoSpin(true);
         setHighlightedSymbolIndex(null); // <--- додаємо цю строку
 
@@ -245,6 +249,7 @@ export default function ResetSlotGame({
     const handleNext = () => {
         setStopped(false);
         setHighlightedSymbolIndex(null);
+        setTimer(30);
 
         setSpinOffsets([0, 0, 0]);
 
@@ -253,10 +258,11 @@ export default function ResetSlotGame({
 
         if (activeIndex < resetWord.length - 1) {
             setActiveIndex((prev) => prev + 1);
+            const nextChar = resetWord[activeIndex + 1];
             setReels([
-                generateReel(resetWord),
-                generateReel(resetWord),
-                generateReel(resetWord),
+                generateReel(resetWord, nextChar),
+                generateReel(resetWord, nextChar),
+                generateReel(resetWord, nextChar),
             ]);
             setAutoSpin(true);
         } else {
@@ -271,6 +277,14 @@ export default function ResetSlotGame({
         setStopped(false);
         setTimer(30);
         setSpinOffsets([0, 0, 0]);
+
+        const targetChar = resetWord[activeIndex];
+        setReels([
+            generateReel(resetWord, targetChar),
+            generateReel(resetWord, targetChar),
+            generateReel(resetWord, targetChar),
+        ]);
+
 
         // стираємо лише невдалу (wrong) спробу для поточної клітинки
         setLocked((prev) => prev.map((v, i) => (i === activeIndex && v?.status === "wrong" ? null : v)));
